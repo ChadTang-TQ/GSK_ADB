@@ -25,6 +25,13 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+      - name: Configure Databricks CLI
+      run: |
+        mkdir -p ~/.databricks
+        echo "[DEFAULT]" > ~/.databricks/config
+        echo "host = ${{ secrets.DATABRICKS_HOST }}" >> ~/.databricks/config
+        echo "token = ${{ secrets.DATABRICKS_TOKEN }}" >> ~/.databricks/config
+        
       # Runs a single command using the runners shell
       - name: Run Databricks CLI Command
         run: |
