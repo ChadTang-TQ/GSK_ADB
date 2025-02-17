@@ -38,3 +38,7 @@ jobs:
         echo "[DEFAULT]" > ~/.databricks/config
         echo "host = ${{ secrets.DATABRICKS_HOST }}" >> ~/.databricks/config
         echo "token = ${{ secrets.DATABRICKS_TOKEN }}" >> ~/.databricks/config
+
+    - name: Run Databricks CLI Command
+      run: |
+          databricks clusters list
